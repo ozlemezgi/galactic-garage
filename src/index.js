@@ -8,20 +8,24 @@ import Home from './pages/Home/Home';
 import About from './pages/About/About';
 import StarshipList from './components/StarshipList/StarshipList';
 import StarshipDetails from './components/StarshipDetails/StarshipDetails';
+import { AppProvider } from './context';
+
 
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <BrowserRouter>
-    <Routes>
-      <Route path="/" element={<Home />}>
-        <Route path="about" element={<About />}></Route>
-        <Route path="starship" element={<StarshipList />}></Route>
-        <Route path="starship/:id" element={<StarshipDetails />}></Route>
-      </Route>
-    </Routes>
-  </BrowserRouter>
+  <AppProvider>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />}>
+          <Route path="about" element={<About />}></Route>
+          <Route path="starship" element={<StarshipList />}></Route>
+          <Route path="starship/:id" element={<StarshipDetails />}></Route>
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  </AppProvider>
 );
 
 
