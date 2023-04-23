@@ -14,7 +14,13 @@ import StarshipDetails from './components/StarshipDetails/StarshipDetails';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
-    <Routes></Routes>
+    <Routes>
+      <Route path="/" element={<Home />}>
+        <Route path="about" element={<About />}></Route>
+        <Route path="starship" element={<StarshipList />}></Route>
+        <Route path="starship/:id" element={<StarshipDetails />}></Route>
+      </Route>
+    </Routes>
   </BrowserRouter>
 );
 
