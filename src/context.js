@@ -19,6 +19,37 @@ const AppProvider = ({children}) =>{
       console.log(data);
       const { results } = data;
       setVehicles(results);
+
+      if(results){
+        const newVehicles = results.slice(0,20).map((vehicleSingle)=>{
+            const {key,name,model,hyperdrive_rating,passengers
+,max_atmosphering_speed,manufacturer,crew,cargo_capacity} = vehicleSingle;
+
+                return{
+                    id:key,
+                    name:name,
+                    model:model,
+                    rating:hyperdrive_rating,
+                    passengers:passengers,
+                    speed:max_atmosphering_speed,
+                    manufacturer:manufacturer,
+                    crew:crew,
+                    cargo:cargo_capacity,
+                }
+        })
+
+        setVehicles(newVehicles);
+
+        if(newVehicles.length >1){
+            setResultTitle("Your Search Result")
+        }else{
+            setResultTitle("No Search Result Found")
+        }
+      }else{
+        setVehicles([]);
+        setResultTitle("No Search Result Found");
+      }
+      setLoading(false);
     } catch (error) {
       console.log(error);
     } finally {
